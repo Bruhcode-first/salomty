@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFE9A8">
+<title>لـ سلومتي 💛</title>
+<meta name="description" content="في رسالة مستنياكي… افتحيها يا سلومتي 🌼">
+<meta property="og:title" content="في رسالة ليكي 💌">
+<meta property="og:description" content="افتحيها يا سلومتي 🌼">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌼</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marhey:wght@400;600;700&family=Baloo+Bhaijaan+2:wght@400;500;600;700&family=Aref+Ruqaa:wght@400;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFF9EC; --butter:#FFF1C1; --sun:#FFD23F; --honey:#F2B632; --deep:#E39B16;
+  --blush:#FFC2C7; --rose:#FF8FA3; --rose-deep:#E9677E; --peach:#FFCBA4; --lilac:#D9C6FF;
+  --leaf:#7DB36A; --leaf-dark:#4E8B45;
+  --ink:#5A3E2B; --ink-soft:#8A6A55; --paper:#FFFDF6;
+  color-scheme: light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Baloo Bhaijaan 2',system-ui,sans-serif;color:var(--ink);background:var(--cream);
+  line-height:1.8;overflow-x:hidden;-webkit-tap-highlight-color:transparent;font-size:18px;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(circle at 12% 8%, #FFF0B8 0, transparent 38%),
+    radial-gradient(circle at 92% 30%, #FFE3E6 0, transparent 34%),
+    radial-gradient(circle at 15% 78%, #FFF3D6 0, transparent 40%),
+    radial-gradient(circle at 88% 92%, #FDEBC8 0, transparent 35%);
+}
+body.locked{overflow:hidden;height:100svh}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+
+/* ---------- intro envelope ---------- */
+.intro{
+  position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px;
+  background:radial-gradient(circle at 50% 42%, #FFF6D6, #FFEBA8 65%, #FFDF8A);
+  transition:opacity 1s ease, transform 1s ease;padding:20px;text-align:center;
+}
+.intro.gone{opacity:0;transform:scale(1.08);pointer-events:none}
+.intro-title{font-family:'Marhey',cursive;font-size:clamp(26px,7vw,36px);font-weight:600}
+.intro-title small{display:block;font-family:'Caveat',cursive;font-size:22px;color:var(--deep);font-weight:500}
+.envelope{position:relative;width:min(300px,78vw);aspect-ratio:1.45/1;perspective:900px;animation:float 3.2s ease-in-out infinite}
+.envelope:focus-visible{outline:3px dashed var(--deep);outline-offset:12px;border-radius:14px}
+.env-back{position:absolute;inset:0;background:var(--honey);border-radius:12px;box-shadow:0 22px 40px rgba(227,155,22,.35)}
+.env-letter{
+  position:absolute;left:7%;right:7%;top:6%;bottom:6%;background:var(--paper);border-radius:8px;z-index:2;
+  display:flex;flex-direction:column;align-items:center;padding-top:9%;
+  font-family:'Marhey',cursive;font-size:clamp(18px,5vw,22px);
+  transition:transform 1.1s cubic-bezier(.2,.9,.3,1.15) .55s;
+}
+.env-letter span{font-family:'Aref Ruqaa',serif;font-size:.85em;color:var(--ink-soft)}
+.env-front{position:absolute;inset:0;background:var(--sun);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:12px;z-index:3}
+.env-flap{
+  position:absolute;left:0;right:0;top:0;height:62%;background:#F7C338;clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;z-index:4;transition:transform .6s ease, z-index 0s .3s;border-radius:12px 12px 0 0;
+}
+.seal{
+  position:absolute;left:50%;top:62%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;z-index:5;
+  background:radial-gradient(circle at 35% 30%, #FFA8B4, var(--rose-deep));display:grid;place-items:center;
+  box-shadow:0 4px 12px rgba(0,0,0,.18), inset 0 -3px 0 rgba(0,0,0,.08);transition:transform .4s ease, opacity .4s;
+}
+.seal svg{width:42px;height:42px;animation:spin 12s linear infinite}
+.envelope.open{animation:none}
+.envelope.open .seal{transform:scale(0) rotate(120deg);opacity:0}
+.envelope.open .env-flap{transform:rotateX(180deg);z-index:1}
+.envelope.open .env-letter{transform:translateY(-56%)}
+.intro-hint{font-size:17px;color:var(--ink-soft);animation:pulse 1.8s ease-in-out infinite}
+.intro-title,.intro-hint{transition:opacity .5s ease, transform .5s ease}
+.intro.opening .intro-title{opacity:0;transform:translateY(-20px)}
+.intro.opening .intro-hint{opacity:0;animation:none}
+
+/* ---------- ambient ---------- */
+.petals{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+.petal{
+  position:absolute;top:-6vh;width:var(--w);height:calc(var(--w)*1.3);background:var(--c);opacity:.75;
+  border-radius:150% 0 150% 0;animation:fallDown var(--t) linear var(--dl) infinite;
+}
+@keyframes fallDown{
+  0%{transform:translate(0,-6vh) rotate(0)}
+  25%{transform:translate(28px,26vh) rotate(90deg)}
+  50%{transform:translate(-18px,55vh) rotate(180deg)}
+  75%{transform:translate(24px,82vh) rotate(270deg)}
+  100%{transform:translate(0,112vh) rotate(360deg)}
+}
+.burst{position:fixed;pointer-events:none;z-index:70;width:12px;height:15px;border-radius:150% 0 150% 0;background:var(--c);
+  animation:burst .9s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--bx),var(--by)) rotate(var(--br));opacity:0}}
+
+/* ---------- layout ---------- */
+section{position:relative;padding:90px 20px;max-width:620px;margin:0 auto;text-align:center}
+.kicker{font-family:'Caveat',cursive;font-size:24px;color:var(--deep);display:block;line-height:1;margin-bottom:4px;direction:ltr}
+h2{font-family:'Marhey',cursive;font-weight:600;font-size:clamp(30px,8vw,42px);line-height:1.4;margin-bottom:8px}
+.sub{color:var(--ink-soft);font-size:18px;max-width:440px;margin:0 auto}
+.mark{background:linear-gradient(transparent 58%, #FFE27A 58%);padding:0 2px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease, transform .9s ease;transition-delay:var(--rd,0s)}
+.reveal.in{opacity:1;transform:none}
+.vine{display:block;margin:0 auto;width:120px;height:26px;opacity:.9}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding-top:40px}
+.hero-sun{width:clamp(110px,34vw,150px);margin-bottom:6px;animation:spin 30s linear infinite;filter:drop-shadow(0 10px 20px rgba(242,182,50,.35))}
+.eyebrow{font-size:18px;color:var(--ink-soft)}
+h1{
+  font-family:'Marhey',cursive;font-weight:700;font-size:clamp(68px,21vw,124px);line-height:1.15;color:var(--deep);
+  text-shadow:0 5px 0 #fff, 0 14px 34px rgba(242,182,50,.4);
+}
+.hero-line{font-size:clamp(20px,5.4vw,24px);margin-top:8px}
+.scroll-hint{margin-top:40px;font-size:16px;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:2px}
+.scroll-hint i{font-style:normal;font-size:22px;animation:bob 1.6s ease-in-out infinite}
+.hero-deco{position:absolute;width:var(--s);opacity:.9;animation:swayDeco 5s ease-in-out infinite alternate;animation-delay:var(--dd)}
+body:not(.started) .hero > *{opacity:0}
+body.started .hero > *{animation:heroIn 1s cubic-bezier(.2,.9,.3,1.1) both;animation-delay:calc(var(--i,0) * .18s)}
+body.started .hero .hero-sun{animation:heroIn 1s cubic-bezier(.2,.9,.3,1.1) both, spin 30s linear 1s infinite}
+body.started .hero .hero-deco{animation:heroIn 1s ease both, swayDeco 5s ease-in-out 1s infinite alternate}
+@keyframes heroIn{from{opacity:0;transform:translateY(30px) scale(.9)}to{opacity:1;transform:none}}
+
+/* ---------- chat ---------- */
+.chat{
+  direction:ltr;text-align:left;background:#2B2D31;color:#DBDEE1;border-radius:18px;overflow:hidden;margin:28px auto 26px;
+  box-shadow:0 18px 40px rgba(43,45,49,.25);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:15px;line-height:1.5;max-width:420px;
+}
+.chat-head{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#232428;border-bottom:1px solid #1E1F22}
+.chat-head b{color:#F2F3F5;font-size:15px}
+.chat-head small{color:#949BA4;font-size:12px;margin-left:auto}
+.chat-head .hash{color:#80848E;font-size:20px;font-weight:600;line-height:1}
+.chat-body{padding:14px 16px 16px}
+.divider{display:flex;align-items:center;gap:10px;color:#949BA4;font-size:12px;font-weight:600;margin:4px 0 14px}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:#3F4147}
+.sys{display:flex;gap:12px;align-items:flex-start;padding:4px 0}
+.sys .arrow{color:#23A55A;font-size:18px;line-height:1.2}
+.sys p{color:#DBDEE1}
+.sys p b{color:#FFD23F}
+.sys time{color:#949BA4;font-size:12px;margin-left:6px}
+.typing{margin-top:12px;color:#B5BAC1;font-size:13px;display:flex;align-items:center;gap:8px}
+.dots{display:inline-flex;gap:3px}
+.dots i{width:6px;height:6px;border-radius:50%;background:#DBDEE1;animation:dot 1.2s ease-in-out infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+.story-lines p{font-size:clamp(19px,5vw,22px);margin:10px 0}
+
+/* ---------- streak ---------- */
+.counter{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:30px 0 26px}
+.unit{background:var(--paper);border-radius:20px;padding:14px 4px 8px;box-shadow:0 6px 0 #F5DFA0, 0 14px 26px rgba(227,155,22,.14)}
+.num{font-family:'Marhey',cursive;font-size:clamp(26px,8vw,40px);color:var(--deep);line-height:1.25;display:block}
+.lbl{font-size:15px;color:var(--ink-soft)}
+.flame{display:inline-block;animation:flame 1s ease-in-out infinite alternate;transform-origin:bottom}
+.streak-lines p{margin:8px 0;font-size:19px}
+
+/* ---------- garden ---------- */
+.garden-count{font-family:'Marhey',cursive;font-size:22px;color:var(--deep);margin-top:12px}
+.garden{
+  margin:22px -8px 0;border-radius:30px;padding:22px 6px 18px;position:relative;
+  background:linear-gradient(to bottom, #FFF8E0, #FFF1CC 55%, #EAF3D2);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.7), 0 18px 40px rgba(125,179,106,.15);
+}
+.plants{display:flex;flex-wrap:wrap;justify-content:center;gap:0 2px}
+.plant{width:52px;height:112px;cursor:pointer;transform-origin:50% 100%;animation:sway 4s ease-in-out infinite alternate;animation-delay:var(--sd)}
+.plant svg{width:100%;height:100%;overflow:visible;transform-origin:50% 100%}
+.plant .stem{stroke-dasharray:130;stroke-dashoffset:130}
+.plant .leaf,.plant .head{transform:scale(0);transform-box:fill-box;transform-origin:center}
+.plant.grow .stem{animation:draw .8s ease-out var(--d) forwards}
+.plant.grow .leaf{animation:pop .45s ease-out calc(var(--d) + .45s) forwards}
+.plant.grow .head{animation:pop .65s cubic-bezier(.3,1.6,.5,1) calc(var(--d) + .6s) forwards}
+.plant.picked svg{filter:drop-shadow(0 0 10px rgba(255,210,63,.95))}
+.plant.hop svg{animation:hop .55s ease}
+.plant.today svg{filter:drop-shadow(0 0 8px rgba(255,143,163,.8))}
+.garden-cap{
+  min-height:92px;margin:14px auto 0;max-width:340px;background:var(--paper);border-radius:18px;padding:12px 16px;
+  box-shadow:0 8px 20px rgba(90,62,43,.08);display:flex;flex-direction:column;justify-content:center;
+}
+.garden-cap b{font-family:'Marhey',cursive;font-weight:600;color:var(--deep)}
+.garden-cap.pop{animation:popIn .4s ease}
+.garden-note{margin-top:16px;color:var(--ink-soft);font-size:17px}
+
+/* ---------- daisy game ---------- */
+.daisy-wrap{position:relative;margin:18px auto 0;width:min(290px,74vw)}
+#daisy{width:100%;overflow:visible;cursor:pointer;touch-action:manipulation}
+#daisy .dp{transform-box:fill-box;transform-origin:50% 100%;transition:filter .2s}
+#daisy .dp.fall{animation:petalFall 1.2s ease-in forwards;pointer-events:none}
+@keyframes petalFall{
+  0%{transform:none;opacity:1}
+  100%{transform:translate(var(--fx),var(--fy)) rotate(var(--fr));opacity:0}
+}
+#daisy .center{transition:transform .2s;transform-box:fill-box;transform-origin:center}
+#daisy:active .center{transform:scale(.94)}
+.verdict{font-family:'Marhey',cursive;font-size:clamp(28px,8vw,36px);min-height:60px;margin-top:6px;color:var(--rose-deep)}
+.verdict.yes{color:var(--deep)}
+.verdict.bump{animation:popIn .35s ease}
+.daisy-result{display:none;margin-top:4px}
+.daisy-result.show{display:block;animation:popIn .5s ease}
+.daisy-result p{font-size:20px;margin-bottom:14px}
+.btn{
+  display:inline-block;background:var(--sun);color:var(--ink);font-weight:700;padding:10px 26px;border-radius:999px;font-size:18px;
+  box-shadow:0 5px 0 var(--deep);transition:transform .15s, box-shadow .15s;
+}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--deep)}
+.btn.light{background:#fff;box-shadow:0 5px 0 #EBD9B4}
+
+/* ---------- jar ---------- */
+.jar-btn{display:block;margin:20px auto 0;width:min(210px,56vw);touch-action:manipulation}
+.jar-btn svg{width:100%;overflow:visible}
+.jar-btn.shake svg{animation:shake .5s ease}
+.note-card{
+  position:relative;margin:18px auto 0;max-width:380px;min-height:130px;background:var(--paper);border-radius:18px;padding:24px 22px 18px;
+  box-shadow:0 10px 26px rgba(90,62,43,.1);transform:rotate(-1.2deg);display:flex;flex-direction:column;justify-content:center;
+}
+.note-card::before{content:"";position:absolute;top:-10px;left:50%;width:90px;height:22px;margin-left:-45px;background:rgba(255,210,63,.6);transform:rotate(2deg);border-radius:3px}
+.note-card small{color:var(--deep);font-weight:700;font-size:15px}
+.note-card p{font-size:clamp(19px,5vw,22px);line-height:1.7}
+.note-card.pop{animation:noteIn .5s cubic-bezier(.3,1.5,.5,1)}
+
+/* ---------- open when ---------- */
+.envs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.env-card{
+  position:relative;aspect-ratio:1.35/1;background:var(--sun);border-radius:14px;overflow:hidden;
+  box-shadow:0 8px 0 var(--honey), 0 16px 28px rgba(227,155,22,.18);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding:0 8px 12px;transition:transform .2s;
+}
+.env-card:nth-child(3n+2){background:var(--blush);box-shadow:0 8px 0 #F2A2AE, 0 16px 28px rgba(233,103,126,.16)}
+.env-card:nth-child(3n+3){background:#FFE0C4;box-shadow:0 8px 0 #F6BD8E, 0 16px 28px rgba(246,189,142,.2)}
+.env-card::before{content:"";position:absolute;inset:0 0 auto 0;height:55%;background:rgba(255,255,255,.35);clip-path:polygon(0 0,100% 0,50% 100%)}
+.env-card:active{transform:scale(.96)}
+.env-card .emo{font-size:30px;line-height:1;position:relative;margin-bottom:6px}
+.env-card .t{font-size:15.5px;font-weight:600;line-height:1.35;position:relative}
+.env-card .t em{font-style:normal;display:block;font-size:12.5px;opacity:.7;font-weight:500}
+.env-card.opened::after{content:"اتفتحت 💛";position:absolute;top:8px;left:8px;font-size:11px;background:#fff;border-radius:999px;padding:1px 8px}
+.modal{position:fixed;inset:0;z-index:80;background:rgba(90,62,43,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal.show{opacity:1;pointer-events:auto}
+.paper{
+  position:relative;width:100%;max-width:460px;max-height:86svh;overflow:auto;border-radius:20px;padding:34px 26px 24px;text-align:center;
+  background:repeating-linear-gradient(to bottom, var(--paper) 0 37px, #F3E6C8 37px 38px);
+  box-shadow:0 30px 60px rgba(90,62,43,.3);transform:translateY(30px) scale(.96);transition:transform .4s cubic-bezier(.3,1.4,.5,1);
+}
+.modal.show .paper{transform:none}
+.paper h3{font-family:'Marhey',cursive;font-weight:600;font-size:24px;margin-bottom:10px;color:var(--deep)}
+.paper p{font-size:19px;line-height:2;white-space:pre-line;text-align:right}
+.paper .close{position:absolute;top:10px;left:12px;width:36px;height:36px;border-radius:50%;background:#fff;font-size:18px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.paper .btn{margin-top:18px}
+
+/* ---------- final letter ---------- */
+.letter-paper{
+  position:relative;margin-top:30px;padding:40px 26px 30px;border-radius:8px;text-align:right;
+  background:repeating-linear-gradient(to bottom, var(--paper) 0 39px, #F3E6C8 39px 40px);
+  box-shadow:0 20px 44px rgba(90,62,43,.14);transform:rotate(.6deg);
+}
+.letter-paper::before{content:"";position:absolute;top:-12px;right:50%;width:110px;height:26px;margin-right:-55px;background:rgba(255,194,199,.75);transform:rotate(-3deg);border-radius:3px}
+.letter-paper p{font-size:clamp(19px,5vw,21px);line-height:40px;margin-bottom:0}
+.letter-paper p + p{margin-top:40px}
+.letter-paper .hi{font-family:'Marhey',cursive;font-weight:600;color:var(--deep);font-size:24px}
+.sign{font-family:'Aref Ruqaa',serif;font-size:36px;text-align:left;color:var(--ink);margin-top:20px;line-height:1.4}
+.ask{position:relative;min-height:300px;margin-top:56px;padding:28px 18px;border-radius:28px;background:#FFF1C1;overflow:hidden;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.8)}
+.ask h3{font-family:'Marhey',cursive;font-weight:600;font-size:clamp(22px,6.4vw,28px);line-height:1.5}
+.ask .q-small{color:var(--ink-soft);font-size:17px}
+.btns{display:flex;gap:16px;justify-content:center;align-items:center;margin-top:26px;min-height:70px}
+.yes{transform:scale(var(--s,1));transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.no{transition:left .25s ease, top .25s ease, transform .25s}
+.after{display:none}
+.after.show{display:block;animation:popIn .6s ease}
+.after .big{font-family:'Marhey',cursive;font-size:clamp(34px,10vw,48px);color:var(--deep);line-height:1.4}
+.after p{font-size:20px;margin-top:6px}
+.confetti{position:fixed;top:-50px;z-index:75;pointer-events:none;width:var(--w);animation:rain var(--t) cubic-bezier(.3,.3,.6,1) var(--dl) forwards}
+@keyframes rain{to{transform:translate(var(--dx),115vh) rotate(var(--r))}}
+
+footer{text-align:center;padding:30px 20px 60px;color:var(--ink-soft);font-size:16px}
+footer .en{font-family:'Caveat',cursive;font-size:24px;display:block;direction:ltr;color:var(--deep)}
+
+/* ---------- keyframes ---------- */
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+@keyframes swayDeco{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+@keyframes sway{from{transform:rotate(-2.5deg)}to{transform:rotate(2.5deg)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{transform:scale(1)}}
+@keyframes hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-12px) scale(1.08)}}
+@keyframes popIn{0%{transform:scale(.85);opacity:0}60%{transform:scale(1.04);opacity:1}100%{transform:scale(1)}}
+@keyframes noteIn{0%{transform:translateY(-40px) rotate(-8deg) scale(.7);opacity:0}100%{transform:rotate(-1.2deg);opacity:1}}
+@keyframes shake{0%,100%{transform:rotate(0)}20%{transform:rotate(-7deg)}40%{transform:rotate(6deg)}60%{transform:rotate(-4deg)}80%{transform:rotate(3deg)}}
+@keyframes flame{from{transform:scale(1) rotate(-4deg)}to{transform:scale(1.15) rotate(4deg)}}
+@keyframes dot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+
+@media (prefers-reduced-motion: reduce){
+  .petals{display:none}
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ============ INTRO ============ -->
+<div class="intro" id="intro">
+  <div class="intro-title"><small>you've got mail</small>وصلتلك رسالة 💌</div>
+  <button class="envelope" id="envelope" aria-label="افتحي الرسالة">
+    <div class="env-back"></div>
+    <div class="env-letter">لـ سلومتي 💛<span>من يوسف</span></div>
+    <div class="env-front"></div>
+    <div class="env-flap"></div>
+    <div class="seal"><svg viewBox="-50 -50 100 100" data-flower="daisy" data-color="#FFFFFF"></svg></div>
+  </button>
+  <div class="intro-hint">دوسي على الختم عشان تفتحيها 🌸</div>
+</div>
+
+<div class="petals" id="petals"></div>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <svg class="hero-deco" style="--s:54px;top:14%;right:8%;--dd:0s" viewBox="-50 -50 100 100" data-flower="blossom" data-color="#FFC2C7"></svg>
+  <svg class="hero-deco" style="--s:40px;top:22%;left:10%;--dd:-1.5s" viewBox="-50 -50 100 100" data-flower="daisy" data-color="#FFFFFF"></svg>
+  <svg class="hero-deco" style="--s:46px;bottom:18%;left:7%;--dd:-3s" viewBox="-50 -50 100 100" data-flower="tulip" data-color="#FF8FA3"></svg>
+  <svg class="hero-deco" style="--s:38px;bottom:24%;right:12%;--dd:-2s" viewBox="-50 -50 100 100" data-flower="blossom" data-color="#D9C6FF"></svg>
+
+  <svg class="hero-sun" style="--i:0" viewBox="-50 -50 100 100" data-flower="sunflower"></svg>
+  <p class="eyebrow" style="--i:1">لـ سمسومتي 🌼</p>
+  <h1 style="--i:2">سلومتي</h1>
+  <p class="hero-line" style="--i:3">عملتلك حتة صغيرة من الإنترنت…<br><span class="mark">مفيهاش غيرك.</span></p>
+  <div class="scroll-hint" style="--i:4">انزلي تحت<i>↓</i></div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section id="story">
+  <span class="kicker reveal">how it started</span>
+  <h2 class="reveal">إزاي بدأت الحكاية؟</h2>
+  <div class="chat reveal" style="--rd:.15s">
+    <div class="chat-head"><span class="hash">#</span><b>general</b><small>English server</small></div>
+    <div class="chat-body">
+      <div class="divider">August 19</div>
+      <div class="sys"><span class="arrow">→</span><p>A wild <b>Salma</b> appeared. 🌼 <time>11:00 PM</time></p></div>
+      <div class="typing"><span class="dots"><i></i><i></i><i></i></span><span><b>Yousef</b> is typing…</span></div>
+    </div>
+  </div>
+  <div class="story-lines">
+    <p class="reveal">١٩ أغسطس، الساعة ١١ بالليل،<br>على سيرفر اسمه <span dir="ltr">English server</span>…</p>
+    <p class="reveal">دخلت أتعلم إنجليزي…<br><span class="mark">طلعت بأحلى حاجة حصلتلي.</span></p>
+    <p class="reveal">ومن ساعتها وأنا لسه بتعلم…<br>بس بتعلّمك إنتي 💛</p>
+  </div>
+</section>
+
+<svg class="vine" viewBox="0 0 120 26"><path d="M4 13 Q 34 -4 60 13 T 116 13" fill="none" stroke="#7DB36A" stroke-width="2.5" stroke-linecap="round"/><circle cx="60" cy="13" r="5" fill="#FFD23F"/><circle cx="30" cy="6" r="3.5" fill="#FFC2C7"/><circle cx="90" cy="20" r="3.5" fill="#FFC2C7"/></svg>
+
+<!-- ============ STREAK ============ -->
+<section id="streak">
+  <span class="kicker reveal">our streak</span>
+  <h2 class="reveal">الـ streak بتاعنا <span class="flame">🔥</span></h2>
+  <p class="sub reveal">من أول ليلة… لحد اللحظة دي بالظبط:</p>
+  <div class="counter reveal" style="--rd:.1s">
+    <div class="unit"><span class="num" id="c-d">٠</span><span class="lbl">يوم</span></div>
+    <div class="unit"><span class="num" id="c-h">٠</span><span class="lbl">ساعة</span></div>
+    <div class="unit"><span class="num" id="c-m">٠</span><span class="lbl">دقيقة</span></div>
+    <div class="unit"><span class="num" id="c-s">٠</span><span class="lbl">ثانية</span></div>
+  </div>
+  <div class="streak-lines">
+    <p class="reveal"><span class="mark">ولا يوم واحد</span> عدى من غير ما نتكلم.</p>
+    <p class="reveal">ولسه متقابلناش… ومع ذلك إنتي أقرب حد ليا.</p>
+    <p class="reveal">والمسافة؟ مجرد رقم على الخريطة 🗺️</p>
+  </div>
+</section>
+
+<!-- ============ GARDEN ============ -->
+<section id="garden-sec">
+  <span class="kicker reveal">Salma's garden</span>
+  <h2 class="reveal">جنينة سلمى 🌷</h2>
+  <p class="sub reveal">كل يوم اتكلمنا فيه… زرعتلك وردة.</p>
+  <p class="garden-count reveal" id="garden-count"></p>
+  <div class="garden reveal" id="garden">
+    <div class="plants" id="plants"></div>
+  </div>
+  <div class="garden-cap" id="garden-cap"><span>دوسي على أي وردة 🌼</span></div>
+  <p class="garden-note reveal">وكل يوم هتطلع وردة جديدة لوحدها…<br>تعالي بصي بكرة 🌱</p>
+</section>
+
+<!-- ============ DAISY GAME ============ -->
+<section id="daisy-sec">
+  <span class="kicker reveal">loves me, loves me not</span>
+  <h2 class="reveal">بيحبك… ولا مبيحبكش؟</h2>
+  <p class="sub reveal">اللعبة القديمة بتاعة الورد 🌼<br>شيلي ورقة ورقة وشوفي النتيجة</p>
+  <div class="daisy-wrap reveal">
+    <svg id="daisy" viewBox="-70 -70 140 190" aria-label="وردة، دوسي على الورق">
+      <path d="M0 20 Q -6 70 0 118" stroke="#7DB36A" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="-16" cy="80" rx="16" ry="6" transform="rotate(-30 -16 80)" fill="#7DB36A"/>
+      <ellipse cx="15" cy="96" rx="14" ry="5.5" transform="rotate(28 15 96)" fill="#6AA35A"/>
+      <g class="petals-g"></g>
+      <g class="center"><circle r="19" fill="#FFC93C"/><circle r="19" fill="none" stroke="#F0A81E" stroke-width="3.5" opacity=".6"/><circle cx="-6" cy="-5" r="2" fill="#E39B16"/><circle cx="5" cy="-7" r="2" fill="#E39B16"/><circle cx="7" cy="4" r="2" fill="#E39B16"/><circle cx="-4" cy="7" r="2" fill="#E39B16"/><circle cx="0" cy="0" r="2" fill="#E39B16"/></g>
+    </svg>
+  </div>
+  <div class="verdict" id="verdict">دوسي على أي ورقة 👆</div>
+  <div class="daisy-result" id="daisy-result"><p id="daisy-msg"></p><button class="btn" id="daisy-again">تاني؟ 🌼</button></div>
+</section>
+
+<!-- ============ JAR ============ -->
+<section id="jar-sec">
+  <span class="kicker reveal">a jar of reasons</span>
+  <h2 class="reveal">برطمان الأسباب 🫙</h2>
+  <p class="sub reveal">دوسي على البرطمان… هيطلعلك سبب من الأسباب اللي بحبك عشانها</p>
+  <button class="jar-btn reveal" id="jar" aria-label="البرطمان">
+    <svg viewBox="0 0 200 240">
+      <path d="M52 46 H148 C170 46 176 70 176 100 V200 C176 222 160 232 140 232 H60 C40 232 24 222 24 200 V100 C24 70 30 46 52 46Z" fill="#FFF8E6" opacity=".9"/>
+      <g id="jar-notes"></g>
+      <path d="M52 46 H148 C170 46 176 70 176 100 V200 C176 222 160 232 140 232 H60 C40 232 24 222 24 200 V100 C24 70 30 46 52 46Z" fill="rgba(255,255,255,.28)" stroke="rgba(90,62,43,.28)" stroke-width="3"/>
+      <path d="M42 90 C40 120 40 160 44 196" stroke="#fff" stroke-width="8" stroke-linecap="round" fill="none" opacity=".75"/>
+      <rect x="44" y="30" width="112" height="18" rx="7" fill="#E39B16"/>
+      <rect x="50" y="8" width="100" height="28" rx="9" fill="#F2B632"/>
+      <path d="M58 8 Q 100 -10 142 8" stroke="#FF8FA3" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <rect x="66" y="96" width="68" height="34" rx="10" fill="#FFFDF6" stroke="#F2B632" stroke-width="2.5"/>
+      <text x="100" y="120" text-anchor="middle" font-family="Marhey, cursive" font-size="17" fill="#5A3E2B">أسباب 💛</text>
+    </svg>
+  </button>
+  <div class="note-card" id="note"><small>&nbsp;</small><p>البرطمان مليان… يلا دوسي 🫙</p></div>
+</section>
+
+<!-- ============ OPEN WHEN ============ -->
+<section id="letters-sec">
+  <span class="kicker reveal">open when…</span>
+  <h2 class="reveal">افتحيها لما…</h2>
+  <p class="sub reveal">جوابات صغيرة مستنياكي، كل واحد ليه وقته 💌</p>
+  <div class="envs" id="envs"></div>
+</section>
+
+<!-- ============ FINAL ============ -->
+<section id="final">
+  <span class="kicker reveal">one last thing</span>
+  <h2 class="reveal">آخر حاجة…</h2>
+  <div class="letter-paper reveal" id="letter">
+    <p class="hi">سلمى،</p>
+    <p>عمري ما كنت أتخيل إن سيرفر لتعليم الإنجليزي هيبقى أحلى صدفة في حياتي.</p>
+    <p>إحنا لسه متقابلناش، بس بطريقة ما بقيتي جزء من كل يوم عندي. أول حاجة بدوّر عليها لما أصحى رسالتك، وآخر حاجة قبل ما أنام كلامنا.</p>
+    <p>مفيش مناسبة النهارده… وده بالظبط المقصود. مش محتاج مناسبة عشان أقولك إني بحبك، كفاية إنه يوم عادي وإنتي فيه.</p>
+    <p>الموقع ده صغير، بس اللي جوايا ليكي <span class="mark">مش صغير خالص.</span></p>
+    <div class="sign">— يوسف 💛</div>
+  </div>
+
+  <div class="ask reveal" id="ask">
+    <div class="before" id="before">
+      <p class="q-small">سؤال أخير بقى…</p>
+      <h3>تفضلي سلومتي على طول؟ 🌻</h3>
+      <div class="btns" id="btns">
+        <button class="btn yes" id="yes">آه طبعًا 💛</button>
+        <button class="btn light no" id="no">لأ</button>
+      </div>
+    </div>
+    <div class="after" id="after">
+      <div class="big">كنت عارف 🌼</div>
+      <p>الـ streak مستمر… للأبد <span class="flame">🔥</span></p>
+      <p style="color:var(--ink-soft);font-size:18px;margin-top:14px">ودلوقتي اقفلي الموقع وابعتيلي رسالة 😌💛</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span class="en">made with love, for Salma</span>
+  من يوسف… لـ سلومتي 🌼
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="paper">
+    <button class="close" id="m-close" aria-label="قفل">✕</button>
+    <h3 id="m-title"></h3>
+    <p id="m-body"></p>
+    <button class="btn" id="m-ok">💛</button>
+  </div>
+</div>
+
+<script>
+/* ================= settings ================= */
+// اللحظة اللي بدأ فيها كل حاجة: 19 أغسطس 2026، 11 بالليل
+const START = new Date(2026, 7, 19, 23, 0, 0);
+
+const REASONS = [
+  "عشان بتضحكيني حتى في الأيام اللي مكنتش ناوي أضحك فيها",
+  "عشان بتحبي الورد… وإنتي نفسك أحلى وردة شفتها 🌸",
+  "عشان بقيتي أول حد بكلمه الصبح، وآخر حد بكلمه بالليل",
+  "عشان هزارك مبيخلصش… وأنا مبزهقش منه",
+  "عشان خليتي اللون الأصفر لوني المفضل 💛",
+  "عشان حتى من ورا الشاشة… حاسس إنك قريبة جدًا",
+  "عشان كل رسالة منك بتعدّل يومي",
+  "عشان إنتي سلومتي. بس كده. مش محتاجة سبب.",
+  "عشان أول ما اسمك بيظهر على الشاشة، بضحك لوحدي زي العبيط 😅",
+  "عشان الإنجليزي بتاعي متحسنش… بس أنا اتحسنت 😂",
+  "عشان بتسمعيني حتى لما بقول كلام ملوش لازمة",
+  "__DAYS__",
+  "عشان إنتي إنتي. ومفيش منك اتنين.",
+  "عشان حتى زعلك شكله حلو (بس متزعليش 😅)",
+  "عشان بتسأليني عملت إيه النهارده… وبتبقي عايزة تعرفي بجد",
+  "عشان الدنيا بقى فيها لون… وطلع أصفر 🌻",
+  "عشان بتخليني عايز أبقى أحسن",
+  "عشان معاكي مبحسش إني لازم أبقى حد تاني",
+  "عشان \"صباح الخير\" منك غير أي صباح خير",
+  "عشان سمسومتي… الاسم لوحده بيفرّحني 🌼",
+];
+
+const LETTERS = [
+  {emo:"🌧️", t:"…تكوني زعلانة", body:
+`سلومتي،
+أنا مش عارف إيه اللي مزعلك دلوقتي، بس عارف حاجة واحدة أكيد: إنتي أقوى من أي يوم وحش.
+خدي نفس عميق، اشربي حاجة سخنة، وابعتيلي… حتى لو كلمة واحدة.
+أنا هنا، ودايمًا هكون هنا.
+وافتكري إن حتى الورد بيعدي عليه شتا… وبيرجع يفتّح تاني 🌼`},
+  {emo:"🌙", t:"…مايجيلكيش نوم", body:
+`مش جايلك نوم؟
+طب غمّضي عينك وتخيلي جنينة كلها ورد أصفر، ونسمة هوا خفيفة… وأنا قاعد بحكيلك حاجة مملة جدًا عن قواعد الـ English 😂
+أكيد هتنامي قبل ما أخلّص الجملة.
+تصبحي على خير يا سمسومتي، وبكرة الصبح هتلاقي رسالتي مستنياكي 💛`},
+  {emo:"🥺", t:"…أوحشك", body:
+`وحشتك؟ 🥺
+ما إنتي كمان وحشاني على فكرة… أكتر ما تتخيلي.
+المسافة دي مؤقتة، بس اللي بينا مش مؤقت.
+يلا ابعتيلي "وحشتني" دلوقتي… وأنا هرد في ثانية (أو اتنين لو الموبايل بيشحن 😅)`},
+  {emo:"😂", t:"…تكوني عايزة تضحكي", body:
+`نكتة مخصوص ليكي:
+ليه الوردة عمرها ما بتتخانق مع حد؟
+عشان هي أصلًا متفتّحة 🌼
+…عارف إنها بايخة 😂
+بس لو ابتسمتي ولو ابتسامة صغيرة، يبقى أنا كسبت.
+وبعدين إنتي اللي اخترتي واحد بيقول نكت زي دي، يبقى الغلط غلطك 😌`},
+  {emo:"🌻", t:"…تكوني فرحانة", body:
+`فرحانة؟ 🌻
+طب احكيلي حالًا! عايز أعرف كل حاجة، بالتفصيل الممل.
+فرحتك دي أحلى خبر ممكن يوصلني النهارده.
+وافتكري إنك تستاهلي كل حاجة حلوة بتحصلك… وأكتر كمان 💛`},
+  {emo:"🌷", t:"…تحسي إنك مش كفاية", body:
+`إنتي كفاية. وزيادة كمان.
+واحدة بتعرف تضحّك اللي حواليها، وبتحب الورد بالشكل ده… مستحيل تكون مش كفاية.
+لو تشوفي نفسك بعيني ولو ثانية واحدة، هتعرفي إنتي قد إيه حلوة.
+فمتصدقيش أي صوت بيقولك غير كده 🌷`},
+];
+
+const GARDEN_LINES = [
+  "يوم حلو… عشان إنتي كنتي فيه",
+  "اتكلمنا اليوم ده؟ آه. زي كل يوم 😌",
+  "وردة صفرا… زي ما بتحبي 💛",
+  "اليوم ده أكيد ضحكتيني فيه 😂",
+  "يوم كمان من غير ما أزهق منك",
+  "لو الأيام دي ورد… فإنتي الجنينة كلها",
+  "يوم عادي؟ مفيش يوم عادي وإنتي فيه",
+  "الوردة دي بتسلّم عليكي 🌸",
+  "واحد من الأيام اللي بستناها",
+];
+
+/* ================= helpers ================= */
+const $ = s => document.querySelector(s);
+const ar = n => new Intl.NumberFormat('ar-EG').format(n);
+const MONTHS = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+const DAY = 864e5;
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const pick = (arr, r) => arr[Math.floor((r ? r() : Math.random()) * arr.length)];
+function daysTogether(){
+  const now = new Date();
+  const a = new Date(START.getFullYear(), START.getMonth(), START.getDate());
+  const b = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  return Math.max(1, Math.round((b - a) / DAY) + 1);
+}
+const store = {
+  get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+
+/* ================= flowers ================= */
+function flowerHead(type, color){
+  let s = '';
+  if (type === 'daisy'){
+    for (let i=0;i<14;i++) s += `<ellipse cx="0" cy="-25" rx="8" ry="21" transform="rotate(${i*360/14})" fill="${color}" stroke="rgba(90,62,43,.12)" stroke-width="1"/>`;
+    s += `<circle r="14" fill="#FFC93C"/><circle r="14" fill="none" stroke="#F0A81E" stroke-width="3" opacity=".6"/>`;
+  } else if (type === 'sunflower'){
+    for (let i=0;i<16;i++) s += `<ellipse cx="0" cy="-27" rx="8" ry="20" transform="rotate(${i*22.5+11.25})" fill="#F2B632"/>`;
+    for (let i=0;i<16;i++) s += `<ellipse cx="0" cy="-27" rx="8" ry="20" transform="rotate(${i*22.5})" fill="#FFD23F"/>`;
+    s += `<circle r="19" fill="#7A4A26"/><circle r="13" fill="#5C361B"/>`;
+    for (let i=0;i<10;i++){const a=i*36*Math.PI/180; s+=`<circle cx="${(Math.cos(a)*9).toFixed(1)}" cy="${(Math.sin(a)*9).toFixed(1)}" r="1.8" fill="#9B6532"/>`;}
+  } else if (type === 'blossom'){
+    for (let i=0;i<5;i++) s += `<circle cx="0" cy="-21" r="18" transform="rotate(${i*72})" fill="${color}"/>`;
+    for (let i=0;i<5;i++) s += `<path d="M0 -8 L0 -26" transform="rotate(${i*72})" stroke="rgba(255,255,255,.6)" stroke-width="2.5" stroke-linecap="round"/>`;
+    s += `<circle r="10" fill="#FFE08A"/><circle r="5" fill="#F2B632"/>`;
+  } else if (type === 'tulip'){
+    s += `<ellipse cx="-11" cy="-6" rx="14" ry="26" transform="rotate(-14 -11 -6)" fill="${color}" style="filter:brightness(.9)"/>`;
+    s += `<ellipse cx="11" cy="-6" rx="14" ry="26" transform="rotate(14 11 -6)" fill="${color}" style="filter:brightness(.9)"/>`;
+    s += `<ellipse cx="0" cy="0" rx="15" ry="27" fill="${color}"/>`;
+    s += `<path d="M-5 -18 Q 0 -4 -4 12" stroke="rgba(255,255,255,.5)" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  }
+  return s;
+}
+document.querySelectorAll('[data-flower]').forEach(el => {
+  el.innerHTML = flowerHead(el.dataset.flower, el.dataset.color || '#FFFFFF');
+});
+
+const COLORS = {
+  daisy:['#FFFFFF','#FFFFFF','#FFE3E6','#FFF4C2'],
+  blossom:['#FFC2C7','#FFCBA4','#D9C6FF','#FF9EAA','#FFE680'],
+  tulip:['#FF8FA3','#FFD23F','#FFB26B','#D9C6FF','#FF7A93'],
+};
+function plantSVG(i){
+  const r = rng(i * 7919 + 17);
+  const roll = r();
+  const type = i === 0 ? 'sunflower' : roll < .26 ? 'sunflower' : roll < .56 ? 'daisy' : roll < .8 ? 'blossom' : 'tulip';
+  const color = type === 'sunflower' ? '' : pick(COLORS[type], r);
+  const topY = 26 + r() * 30;
+  const bend = (r() - .5) * 14;
+  const midY = (140 + topY) / 2;
+  const side = r() < .5 ? -1 : 1;
+  const sc = type === 'tulip' ? .44 : .42 + r() * .08;
+  return {
+    line: pick(GARDEN_LINES, r),
+    svg: `<svg viewBox="0 0 60 140" aria-hidden="true">
+      <path d="M22 140 Q 24 131 21 126 M30 140 Q 30 130 32 124 M37 140 Q 37 132 41 128" stroke="#9BCB84" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path class="stem" d="M30 140 Q ${30 + bend} ${midY} 30 ${topY}" stroke="#6AA35A" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <ellipse class="leaf" cx="${30 + side*9}" cy="${midY + 12}" rx="9" ry="4" transform="rotate(${side * -30} ${30 + side*9} ${midY + 12})" fill="#7DB36A"/>
+      <g transform="translate(30 ${topY}) scale(${sc.toFixed(2)})"><g class="head">${flowerHead(type, color)}</g></g>
+    </svg>`
+  };
+}
+
+/* ================= intro ================= */
+const envelope = $('#envelope'), intro = $('#intro');
+let opened = false;
+envelope.addEventListener('click', () => {
+  if (opened) return;
+  opened = true;
+  envelope.classList.add('open');
+  intro.classList.add('opening');
+  setTimeout(() => {
+    intro.classList.add('gone');
+    document.body.classList.remove('locked');
+    document.body.classList.add('started');
+    startPetals();
+    window.scrollTo(0, 0);
+  }, 2500);
+  setTimeout(() => intro.remove(), 3600);
+});
+
+/* ================= ambient petals & tap bursts ================= */
+const PETAL_COLORS = ['#FFD23F','#FFC2C7','#FFE680','#FFCBA4','#FF9EAA','#FFFFFF'];
+function startPetals(){
+  const box = $('#petals');
+  const count = window.innerWidth < 600 ? 12 : 18;
+  for (let i=0;i<count;i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = (Math.random()*100) + 'vw';
+    p.style.setProperty('--w', (8 + Math.random()*9) + 'px');
+    p.style.setProperty('--c', pick(PETAL_COLORS));
+    p.style.setProperty('--t', (11 + Math.random()*12) + 's');
+    p.style.setProperty('--dl', (-Math.random()*20) + 's');
+    box.appendChild(p);
+  }
+}
+document.addEventListener('pointerdown', e => {
+  if (!opened) return;
+  for (let i=0;i<7;i++){
+    const b = document.createElement('div');
+    b.className = 'burst';
+    const a = Math.random()*Math.PI*2, d = 30 + Math.random()*40;
+    b.style.left = (e.clientX - 6) + 'px';
+    b.style.top = (e.clientY - 7) + 'px';
+    b.style.setProperty('--c', pick(PETAL_COLORS.slice(0,5)));
+    b.style.setProperty('--bx', Math.cos(a)*d + 'px');
+    b.style.setProperty('--by', Math.sin(a)*d + 'px');
+    b.style.setProperty('--br', (Math.random()*360) + 'deg');
+    document.body.appendChild(b);
+    setTimeout(() => b.remove(), 950);
+  }
+}, {passive:true});
+
+/* ================= scroll reveal ================= */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+}, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+document.querySelectorAll('.story-lines .reveal, .streak-lines .reveal').forEach((el, i) => el.style.setProperty('--rd', (i % 3) * .25 + 's'));
+
+/* ================= streak ================= */
+function tick(){
+  let diff = Math.max(0, Date.now() - START.getTime());
+  const d = Math.floor(diff / DAY); diff -= d * DAY;
+  const h = Math.floor(diff / 36e5); diff -= h * 36e5;
+  const m = Math.floor(diff / 6e4); diff -= m * 6e4;
+  const s = Math.floor(diff / 1e3);
+  $('#c-d').textContent = ar(d); $('#c-h').textContent = ar(h);
+  $('#c-m').textContent = ar(m); $('#c-s').textContent = ar(s);
+}
+tick(); setInterval(tick, 1000);
+
+/* ================= garden ================= */
+const N = daysTogether();
+$('#garden-count').textContent = `${ar(N)} يوم = ${ar(N)} وردة 🌷`;
+const plantsBox = $('#plants'), cap = $('#garden-cap');
+const plantData = [];
+for (let i=0;i<N;i++){
+  const p = plantSVG(i);
+  plantData.push(p);
+  const el = document.createElement('div');
+  el.className = 'plant' + (i === N-1 ? ' today' : '');
+  el.style.setProperty('--sd', (-Math.random()*4) + 's');
+  el.innerHTML = p.svg;
+  el.addEventListener('click', () => selectPlant(i, el));
+  plantsBox.appendChild(el);
+}
+let picked = null;
+function selectPlant(i, el){
+  if (picked) picked.classList.remove('picked');
+  picked = el; el.classList.add('picked');
+  el.classList.remove('hop'); void el.offsetWidth; el.classList.add('hop');
+  const date = new Date(START.getFullYear(), START.getMonth(), START.getDate() + i);
+  const when = `${ar(date.getDate())} ${MONTHS[date.getMonth()]}`;
+  let line = plantData[i].line;
+  if (i === 0) line = "أول وردة… أول ليلة، أول كلمة 🌻";
+  if (i === N-1) line = "وردة النهارده 🌱 لسه بتفتّح… زي كل حاجة بينا";
+  cap.innerHTML = `<b>اليوم ${ar(i+1)} — ${when}</b><span>${line}</span>`;
+  cap.classList.remove('pop'); void cap.offsetWidth; cap.classList.add('pop');
+}
+const gardenIO = new IntersectionObserver(entries => {
+  if (!entries[0].isIntersecting) return;
+  const step = Math.min(90, 2600 / N);
+  plantsBox.querySelectorAll('.plant').forEach((el, i) => {
+    el.style.setProperty('--d', (i * step) + 'ms');
+    el.classList.add('grow');
+  });
+  gardenIO.disconnect();
+}, {threshold:.2});
+gardenIO.observe($('#garden'));
+
+/* ================= daisy game ================= */
+const daisy = $('#daisy'), petalsG = daisy.querySelector('.petals-g'), verdict = $('#verdict');
+let round = 0, total = 11, plucked = 0;
+function buildDaisy(){
+  total = round === 0 ? 11 : pick([7, 9, 13, 15]);
+  plucked = 0;
+  let s = '';
+  for (let i=0;i<total;i++){
+    const a = i * 360 / total, rad = a * Math.PI / 180, D = 110;
+    s += `<g transform="rotate(${a})"><ellipse class="dp" cx="0" cy="-40" rx="10" ry="25" fill="#fff" stroke="rgba(90,62,43,.14)" stroke-width="1.2"
+      style="--fx:${(Math.sin(rad)*D).toFixed(1)}px;--fy:${(Math.cos(rad)*D).toFixed(1)}px;--fr:${Math.round(Math.random()*200-100)}deg"/></g>`;
+  }
+  petalsG.innerHTML = s;
+  verdict.textContent = round === 0 ? 'دوسي على أي ورقة 👆' : 'يلا نجرب تاني… 🤔';
+  verdict.className = 'verdict';
+  $('#daisy-result').classList.remove('show');
+}
+daisy.addEventListener('click', e => {
+  if (plucked >= total) return;
+  let petal = e.target.closest('.dp:not(.fall)') || petalsG.querySelector('.dp:not(.fall)');
+  if (!petal) return;
+  petal.classList.add('fall');
+  plucked++;
+  const loves = plucked % 2 === 1;
+  verdict.textContent = loves ? 'بيحبك 💛' : 'مبيحبكش… 🙄';
+  verdict.className = 'verdict bump' + (loves ? ' yes' : '');
+  if (plucked === total){
+    setTimeout(() => {
+      verdict.textContent = 'بيحبك!! 💛';
+      verdict.className = 'verdict bump yes';
+      const msgs = [
+        'طبعًا بيحبك… هو إنتي كنتي شاكة؟ 😌',
+        'قولتلك… الورد مبيكدبش 🌼',
+        'هتفضلي تجربي؟ النتيجة مش هتتغير 😂💛',
+      ];
+      $('#daisy-msg').textContent = msgs[Math.min(round, msgs.length - 1)];
+      $('#daisy-result').classList.add('show');
+      flowerRain(18);
+    }, 500);
+  }
+});
+$('#daisy-again').addEventListener('click', () => { round++; buildDaisy(); });
+buildDaisy();
+
+/* ================= jar ================= */
+(function fillJar(){
+  const r = rng(42); let s = '';
+  const cols = ['#FFD23F','#FFC2C7','#FFCBA4','#D9C6FF','#FFE680','#FF9EAA','#FFFFFF'];
+  for (let i=0;i<26;i++){
+    const x = 40 + r()*112, y = 140 + r()*78, a = Math.round(r()*80 - 40);
+    s += `<rect x="${x.toFixed(0)}" y="${y.toFixed(0)}" width="20" height="12" rx="3" fill="${pick(cols, r)}" stroke="rgba(90,62,43,.15)" transform="rotate(${a} ${x+10} ${y+6})"/>`;
+  }
+  $('#jar-notes').innerHTML = s;
+})();
+const reasons = REASONS.map(t => t === '__DAYS__' ? `عشان ${ar(N)} يوم معاكي لسه مش كفاية… عايز كمان وكمان` : t);
+let order = [], oi = 0;
+function shuffle(){ order = reasons.map((_, i) => i).sort(() => Math.random() - .5); oi = 0; }
+shuffle();
+const jar = $('#jar'), note = $('#note');
+jar.addEventListener('click', () => {
+  jar.classList.remove('shake'); void jar.offsetWidth; jar.classList.add('shake');
+  let label, text;
+  if (oi >= order.length){
+    label = '…'; text = 'خلصوا؟ لأ طبعًا، أنا بس زهقت أكتب 😂 فيه أكتر من كده بكتير… دوسي تاني';
+    shuffle();
+  } else {
+    label = `سبب رقم ${ar(oi + 1)} من ${ar(order.length)}`;
+    text = reasons[order[oi++]];
+  }
+  note.innerHTML = `<small>${label}</small><p>${text}</p>`;
+  note.classList.remove('pop'); void note.offsetWidth; note.classList.add('pop');
+});
+
+/* ================= open when ================= */
+const openedSet = new Set(store.get('salomty-opened') || []);
+const envs = $('#envs'), modal = $('#modal');
+LETTERS.forEach((L, i) => {
+  const b = document.createElement('button');
+  b.className = 'env-card reveal' + (openedSet.has(i) ? ' opened' : '');
+  b.style.setProperty('--rd', (i % 2) * .12 + 's');
+  b.innerHTML = `<span class="emo">${L.emo}</span><span class="t"><em>افتحيها لما</em>${L.t.replace('…','')}</span>`;
+  b.addEventListener('click', () => {
+    $('#m-title').textContent = 'افتحيها لما ' + L.t.replace('…','') + ' ' + L.emo;
+    $('#m-body').textContent = L.body;
+    modal.classList.add('show');
+    openedSet.add(i); store.set('salomty-opened', [...openedSet]);
+    b.classList.add('opened');
+  });
+  envs.appendChild(b);
+  io.observe(b);
+});
+function closeModal(){ modal.classList.remove('show'); }
+$('#m-close').addEventListener('click', closeModal);
+$('#m-ok').addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ================= final letter ================= */
+document.querySelectorAll('#letter p, #letter .sign').forEach((el, i) => {
+  el.classList.add('reveal'); el.style.setProperty('--rd', (i * .35) + 's'); io.observe(el);
+});
+
+const yes = $('#yes'), no = $('#no'), askBox = $('#ask');
+const NO_TEXTS = ['متأكدة؟ 🤨','فكري تاني','الزرار ده بايظ 😌','مش هتعرفي تدوسي عليه','استسلمي بقى 😂'];
+let dodges = 0;
+function dodge(e){
+  if (e) e.preventDefault();
+  if (dodges >= NO_TEXTS.length){ sayYes(); return; }
+  no.textContent = NO_TEXTS[dodges];
+  dodges++;
+  yes.style.setProperty('--s', 1 + dodges * .12);
+  if (dodges === NO_TEXTS.length){
+    // آخر مرة: الزرار نفسه بيستسلم
+    no.textContent = 'آه طبعًا 💛';
+    no.classList.remove('light');
+  }
+  const box = askBox.getBoundingClientRect();
+  const bw = no.offsetWidth, bh = no.offsetHeight;
+  no.style.position = 'absolute';
+  let x, y, tries = 0;
+  const yr = yes.getBoundingClientRect();
+  do {
+    x = 12 + Math.random() * (box.width - bw - 24);
+    const minY = $('#btns').offsetTop - 6;
+    y = minY + Math.random() * Math.max(10, box.height - bh - 16 - minY);
+    tries++;
+  } while (tries < 20 && Math.abs((box.left + x + bw/2) - (yr.left + yr.width/2)) < bw && Math.abs((box.top + y + bh/2) - (yr.top + yr.height/2)) < bh + 20);
+  no.style.left = x + 'px';
+  no.style.top = y + 'px';
+}
+no.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') dodge(); });
+no.addEventListener('pointerdown', dodge);
+no.addEventListener('click', e => { e.preventDefault(); if (dodges >= NO_TEXTS.length) sayYes(); });
+yes.addEventListener('click', sayYes);
+function sayYes(){
+  $('#before').style.display = 'none';
+  $('#after').classList.add('show');
+  flowerRain(60);
+  store.set('salomty-yes', true);
+}
+
+/* ================= flower rain ================= */
+function flowerRain(n){
+  const types = ['daisy','blossom','sunflower','blossom','tulip'];
+  for (let i=0;i<n;i++){
+    const t = pick(types);
+    const c = t === 'daisy' ? '#FFFFFF' : t === 'sunflower' ? '' : pick(COLORS[t === 'tulip' ? 'tulip' : 'blossom']);
+    const el = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    el.setAttribute('viewBox', '-50 -50 100 100');
+    el.setAttribute('class', 'confetti');
+    el.innerHTML = flowerHead(t, c);
+    el.style.left = (Math.random() * 100) + 'vw';
+    el.style.setProperty('--w', (18 + Math.random() * 22) + 'px');
+    el.style.setProperty('--t', (2.4 + Math.random() * 2.2) + 's');
+    el.style.setProperty('--dl', (Math.random() * .9) + 's');
+    el.style.setProperty('--dx', (Math.random() * 120 - 60) + 'px');
+    el.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 6000);
+  }
+}
+</script>
+</body>
+</html>
